@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    overflow: "none",
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function TransitionsModal(props) {
   const classes = useStyles();
-  //   const [clicked, setClick] = useState(false);
+
   const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => {
@@ -45,6 +46,8 @@ export default function TransitionsModal(props) {
           borderRadius: 5,
           height: "2.5rem",
           width: "6.5rem",
+          fontWeight: 600,
+          border: 0,
         }}
         type="button"
         onClick={handleOpen}
@@ -68,10 +71,10 @@ export default function TransitionsModal(props) {
             {/* <h2 id="transition-modal-title">Transition modal</h2> */}
             {open ? (
               <p id="transition-modal-description">
-                {"... " + props.postContent.substring(99)}
+                {"... " + props.postContent.substring(70)}
               </p>
             ) : (
-              <p>{props.postContent.substring(0, 99) + "..."}</p>
+              <p>{props.postContent.substring(0, 70) + "..."}</p>
             )}
           </div>
         </Fade>

@@ -18,32 +18,39 @@ function DataFetching(props) {
       });
   }, []);
   // console.log("searching...  " + props.search);
-  const filteredPosts = posts.filter((post) => {
-    return post.title.toLowerCase().includes(props.search);
+  // props.search = props.search.shift();
+  const filteredPosts = posts.filter((post, index) => {
+    return post.title.toLowerCase().includes(props.search.toLowerCase());
   });
 
-  // console.log(filteredPosts);
+  console.log(filteredPosts);
 
   return (
     <div>
-      <ul>
-        {filteredPosts.map((post) => (
-          <li className="posts" key={post._id}>
-            <img
-              src={`https://safe-cliffs-03637.herokuapp.com/${post.image}`}
-              alt="postImage"
-            ></img>
-            <p style={{ fontWeight: 800, color: "#347B98" }}>{post.title} </p>
-            <br /> <hr></hr>
-            <p>{post.content.substring(0, 99) + "..."}</p>
-            {post.content.length > 100 ? (
-              <Modal postID={post._id} postContent={post.content} />
-            ) : null}
-          </li>
-        ))}
+      <form>
+        <ul>
+          {filteredPosts.map((post, index) => (
+            <li className="posts" key={post._id}>
+              <img
+                src={`https://safe-cliffs-03637.herokuapp.com/${post.image}`}
+                alt="postImage"
+              ></img>
+              {props.title !== "" ? (
+                <p style={{ fontWeight: 800, color: "#347B98" }}>
+                  {post.title}{" "}
+                </p>
+              ) : null}
+              <br /> <hr></hr>
+              <p>{post.content.substring(0, 70) + "..."}</p>
+              {post.content.length > 70 ? (
+                <Modal postID={post._id} postContent={post.content} />
+              ) : null}
+            </li>
+          ))}
 
-        {/* <button>here</button> */}
-      </ul>
+          {/* <button>here</button> */}
+        </ul>
+      </form>
     </div>
   );
 }

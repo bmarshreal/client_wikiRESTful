@@ -10,11 +10,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ExpandButton(props) {
-  //   const [button, setButton] = useState(false);
   const [clicked, setClick] = useState(false);
   const classes = useStyles();
-
-  // console.log(props.postID);
 
   function trueClick() {
     setClick(!clicked);

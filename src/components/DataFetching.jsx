@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-// import ExpandButton from "./ExpandButton";
 import Modal from "./Modal";
 
 function DataFetching(props) {
@@ -10,15 +9,15 @@ function DataFetching(props) {
     axios
       .get("https://safe-cliffs-03637.herokuapp.com/articles")
       .then((res) => {
-        // console.log(res.data);
+        console.log(res.data);
         setPosts(res.data);
       })
       .catch((err) => {
-        // console.log(err);
+        console.log(err);
       });
   }, []);
   // console.log("searching...  " + props.search);
-  // props.search = props.search.shift();
+
   const filteredPosts = posts.filter((post, index) => {
     return post.title.toLowerCase().includes(props.search.toLowerCase());
   });
@@ -47,8 +46,6 @@ function DataFetching(props) {
               ) : null}
             </li>
           ))}
-
-          {/* <button>here</button> */}
         </ul>
       </form>
     </div>

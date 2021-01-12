@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
-// import ExpandButton from "./ExpandButton";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -38,20 +37,7 @@ export default function TransitionsModal(props) {
 
   return (
     <div>
-      <button
-        style={{
-          margin: 1,
-          backgroundColor: "#4424D6",
-          color: "#D4EDF7",
-          borderRadius: 5,
-          height: "2.5rem",
-          width: "6.5rem",
-          fontWeight: 600,
-          border: 0,
-        }}
-        type="button"
-        onClick={handleOpen}
-      >
+      <button type="button" onClick={handleOpen}>
         ...Read More
       </button>
       <Modal
@@ -68,7 +54,6 @@ export default function TransitionsModal(props) {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            {/* <h2 id="transition-modal-title">Transition modal</h2> */}
             {open ? (
               <p id="transition-modal-description">
                 {"... " + props.postContent.substring(70)}

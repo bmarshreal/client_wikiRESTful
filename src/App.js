@@ -22,11 +22,6 @@ function App() {
     });
   }
 
-  // const indexed = postSearch.filter((posts, index) => {
-  //   return posts;
-  // });
-  // console.log(indexed);
-
   return (
     <div className="grid-container">
       <div className="banner">
@@ -34,12 +29,7 @@ function App() {
 
         <form>
           <input
-            style={{
-              margin: "1rem 0rem 1rem 0rem",
-              border: 0,
-              height: "3rem",
-              borderRadius: "10px",
-            }}
+            className="searchBar"
             value={postSearch.title}
             name="title"
             type="text"

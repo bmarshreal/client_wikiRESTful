@@ -19,8 +19,10 @@ button {
   border: 0;
 }
 img {
-  max-height: 100px;
+  max-height: 105px;
   max-width: 220px;
+  width: 200;
+  height: 100;
   border-radius: 1rem;
   background-size: cover;
   border: 0;

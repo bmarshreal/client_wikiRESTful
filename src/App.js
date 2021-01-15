@@ -1,7 +1,9 @@
-import "./App.css";
-import React, { useState } from "react";
-import DataFetching from "./components/DataFetching";
+/* eslint-disable */
+import React, { useState, lazy, Suspense } from "react";
 import Footer from "./components/Footer";
+import PublicTwoToneIcon from "@material-ui/icons/PublicTwoTone";
+
+const DataFetching = lazy(() => import("./components/DataFetching"));
 
 function App() {
   const [postSearch, setPostSearch] = useState({
@@ -25,8 +27,11 @@ function App() {
   return (
     <div className="grid-container">
       <div className="banner">
-        <h1>🌎 RESTful Wiki Search</h1>
-
+        <h1>
+          {" "}
+          <PublicTwoToneIcon style={{ fontSize: 45, color: "#4424d6" }} />
+          Wiki Search
+        </h1>
         <form>
           <input
             className="searchBar"
@@ -38,12 +43,17 @@ function App() {
             onTouchEnd={dynaSearch}
           ></input>
         </form>
-        <hr></hr>
       </div>
 
-      <div className="post">
-        <DataFetching search={postSearch.title} />
-      </div>
+      <Suspense
+        fallback={
+          <div style={{ fontWeight: 800, color: "white" }}>Loading....</div>
+        }
+      >
+        <div className="post">
+          <DataFetching search={postSearch.title} />
+        </div>
+      </Suspense>
       <div className="footer">
         <Footer />
       </div>

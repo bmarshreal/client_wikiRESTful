@@ -31,6 +31,7 @@ function DataFetching(props) {
           {filteredPosts.map((post, index) => (
             <li className="posts" key={post._id}>
               <img
+                style={{ height: 95, width: 210 }}
                 src={`https://safe-cliffs-03637.herokuapp.com/${post.image}`}
                 alt="postImage"
               ></img>

@@ -2,14 +2,29 @@
 import React, { useState, lazy, Suspense } from "react";
 import Footer from "./components/Footer";
 import PublicTwoToneIcon from "@material-ui/icons/PublicTwoTone";
-
+import { makeStyles } from "@material-ui/core/styles";
+import CircularProgress from "@material-ui/core/CircularProgress";
 const DataFetching = lazy(() => import("./components/DataFetching"));
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    marginLeft: "10rem",
+
+    "& > * + *": {
+      // marginLeft: theme.spacing(2),
+      textAlign: "center",
+      marginLeft: "50%",
+    },
+  },
+}));
 
 function App() {
   const [postSearch, setPostSearch] = useState({
     title: "",
     content: "",
   });
+  const classes = useStyles();
 
   function dynaSearch(event) {
     const { name, value } = event.target;
@@ -44,10 +59,11 @@ function App() {
           ></input>
         </form>
       </div>
-
       <Suspense
         fallback={
-          <div style={{ fontWeight: 800, color: "white" }}>Loading....</div>
+          <div className={classes.root}>
+            <CircularProgress color="secondary" />
+          </div>
         }
       >
         <div className="post">
